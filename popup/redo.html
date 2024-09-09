@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./popup.css" />
-  </head>
-  <body>
-    <h1>Redo</h1>
-    <h2>Tarefas recorrentes</h2>
-    <span>Tarefas do dia </span> <strong>07/09/2024</strong>
-    
-    <ul>
-      <li>( ) Registrar entrada</li>
-      <li>( ) Validar estoque</li>
-      <li>( ) Conferir processamento</li>
-      <li>( ) Registrar saída</li>
-    </ul>
 
-    <script src="./popup.js" type="module"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./popup.css" />
+</head>
+
+<body>
+  <h1>Redo</h1>
+  <h2>Tarefas recorrentes</h2>
+  <span>Tarefas do dia </span> <strong>08/09/2024</strong>
+  <br><br>
+  <ul class="todo-items">
+  </ul>
+
+  <button class="create-task">Nova tarefa</button>
+  <div class="new-task">
+    <input type="text" />
+    <button>Salvar</button>
+  </div>
+
+  <script src="popup.js" type="module"></script>
+</body>
+
 </html>
