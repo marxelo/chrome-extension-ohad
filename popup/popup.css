@@ -3,6 +3,8 @@ body {
     font-size: 0.9rem;
 }
 
+.recurring-todo-items,
+.recurring-todo-items li,
 .todo-items,
 .todo-items li {
     margin: 0;
@@ -10,6 +12,7 @@ body {
     list-style: none;
 }
 
+.recurring-todo-items li,
 .todo-items li {
     padding: 0.25rem;
     /* border-bottom: 0.02rem solid grey; */
@@ -18,6 +21,7 @@ body {
     justify-content: space-between;
 }
 
+.todo-items li:hover,
 .todo-items li:hover {
     background: rgba(0, 0, 0, 0.137);
 }
@@ -25,11 +29,15 @@ body {
 .todo-items li.done .item {
     text-decoration: line-through;
 }
+
+.recurring-todo-items div span 
 .todo-items div span {
     margin: 0.5rem;
     font-size: 1em;
     cursor: pointer;
 }
-.new-task{
+.new-task,
+.new-recurring-task, 
+.recurring-todo-items {
     display: none;
 }
