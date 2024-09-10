@@ -24,6 +24,12 @@ document.querySelector('.new-task button').addEventListener('click', function ()
     }
 })
 
+// cancel task creation
+document.querySelector('.new-task .btnCancel').addEventListener('click', function () {
+    document.querySelector('.new-task').style.display = 'none';
+    document.querySelector('.create-task').style.display = 'block';
+})
+
 document.querySelector('.edit-daily-task button').addEventListener('click', function () {
     var itemName = document.querySelector('.edit-daily-task input').value;
 
@@ -41,6 +47,12 @@ document.querySelector('.edit-daily-task button').addEventListener('click', func
     }
 })
 
+// Cancel daily task editing
+document.querySelector('.edit-daily-task .btnCancel').addEventListener('click', function () {
+    document.querySelector('.create-task').style.display = 'block';
+    document.querySelector('.edit-daily-task-wrapper').style.display = 'none';
+})
+
 function fetchItems() {
 
     const itemsList = document.querySelector('ul.todo-items');
@@ -48,7 +60,6 @@ function fetchItems() {
     var newItemHtml = '';
 
     try {
-        // var items = localStorage.getItem('todo-items');
         var items = localStorage.getItem(getCurrentDateTime());
         var itemsArr = JSON.parse(items);
 
@@ -105,12 +116,8 @@ function fetchItems() {
 
         for (var i = 0; i < itemsArr.length; i++) {
             var value = itemsArr[i].item;
-            console.log(itemsArr[i].item)
-            console.log(itemsArr[i].item.value)
             dailyItems.push({ "item": value, "status": 0 })
             const dailyItemsStr = JSON.stringify(dailyItems);
-            console.log(dailyItems)
-            console.log(dailyItemsStr)
             saveItems(dailyItems)
         }
         fetchItems();
@@ -122,11 +129,14 @@ function itemComplete(index) {
     var itemsStorage = localStorage.getItem(getCurrentDateTime());
     var itemsArr = JSON.parse(itemsStorage);
 
-    itemsArr[index].status = 1;
+    if (itemsArr[index].status == 0) {
+        itemsArr[index].status = 1;
+    } else {
+        itemsArr[index].status = 0;
+    }
 
     saveItems(itemsArr);
-
-    document.querySelector('ul.todo-items li[data-itemindex="' + index + '"]').className = 'done';
+    fetchItems();
 
 }
 
@@ -198,6 +208,13 @@ document.querySelector('.new-recurring-task button').addEventListener('click', f
     }
 })
 
+document.querySelector('.new-recurring-task .btnCancel').addEventListener('click', function () {
+        document.querySelector('.new-recurring-task input').value = '';
+        document.querySelector('.new-recurring-task').style.display = 'none';
+        document.querySelector('.create-recurring-task-wrapper').style.display = 'none';
+        document.querySelector('.create-recurring-task-button').style.display = 'block';    
+})
+
 document.querySelector('.edit-recurring-task button').addEventListener('click', function () {
     var itemName = document.querySelector('.edit-recurring-task input').value;
 
@@ -210,9 +227,14 @@ document.querySelector('.edit-recurring-task button').addEventListener('click', 
         fetchRecurringItems();
         document.querySelector('.edit-recurring-task input').value = '';
         document.querySelector('.edit-recurring-task-wrapper').style.display = 'none';
-        // document.querySelector('.create-recurring-task-wrapper').style.display = 'block';
         document.querySelector('.create-recurring-task-button').style.display = 'block';
     }
+})
+
+document.querySelector('.edit-recurring-task .btnCancel').addEventListener('click', function () {    
+        document.querySelector('.edit-recurring-task input').value = '';
+        document.querySelector('.edit-recurring-task-wrapper').style.display = 'none';
+        document.querySelector('.create-recurring-task-button').style.display = 'block';    
 })
 
 function fetchRecurringItems() {

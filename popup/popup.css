@@ -1,6 +1,8 @@
 body {
     width: 30rem;
     font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 100;
 }
 
 .recurring-todo-items,
@@ -55,7 +57,7 @@ body {
 button {
     border: none;
     border-radius: 50.0rem;
-    font-family: 'Your Custom Font', sans-serif;
+    font-family: 'Poppins', sans-serif;
     /* Replace 'Your Custom Font' with your desired font */
     background-color: #007BFF;
     /* Replace with your desired color */
@@ -63,6 +65,7 @@ button {
     /* Replace with your desired text color */
     padding: 0.4rem 0.8rem;
     cursor: pointer;
+    margin-right: 0.2rem;
 }
 
 button:hover {
@@ -88,4 +91,12 @@ input {
     /* Adjust as needed if padding or border-radius change */
     display: inline;
     /* Makes input fill the width (optional) */
+}
+
+.btnCancel {
+    background-color: red;
+}
+
+.btnCancel:hover {
+    background-color: rgb(180, 13, 13);
 }
