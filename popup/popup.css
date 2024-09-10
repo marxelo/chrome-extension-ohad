@@ -30,14 +30,62 @@ body {
     text-decoration: line-through;
 }
 
-.recurring-todo-items div span 
-.todo-items div span {
+.recurring-todo-items div span .todo-items div span {
     margin: 0.5rem;
     font-size: 1em;
     cursor: pointer;
 }
+
 .new-task,
-.new-recurring-task, 
-.recurring-todo-items {
+.new-recurring-task,
+.recurring-todo-items,
+.edit-recurring-task,
+.recurring-task-container,
+.create-recurring-task-wrapper,
+.edit-recurring-task-wrapper,
+.edit-daily-task-wrapper {
     display: none;
+}
+
+.recurring-task-button-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+button {
+    border: none;
+    border-radius: 50.0rem;
+    font-family: 'Your Custom Font', sans-serif;
+    /* Replace 'Your Custom Font' with your desired font */
+    background-color: #007BFF;
+    /* Replace with your desired color */
+    color: #fff;
+    /* Replace with your desired text color */
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b2;
+    /* Adjust hover color as needed */
+}
+
+input {
+    border: 1px solid #007BFF;
+    /* Remove default border */
+    border-radius: 50.0rem;
+    /* Same rounded corners as buttons */
+    font-family: inherit;
+    /* Inherit font from parent element or buttons */
+    background-color: #fff;
+    /* Light background for input */
+    color: #333;
+    /* Darker text color for readability */
+    padding: 0.4rem 0.4rem;
+    /* Same padding as buttons */
+    height: calc(0.4rem + 2 * 0.8rem);
+    /* Calculate height based on padding and border-radius */
+    /* Adjust as needed if padding or border-radius change */
+    display: inline;
+    /* Makes input fill the width (optional) */
 }
