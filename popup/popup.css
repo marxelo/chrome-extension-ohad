@@ -1,8 +1,49 @@
+html {
+    font-size: 62.5%;
+}
+
+
 body {
-    width: 30rem;
-    font-size: 0.9rem;
+    width: 50rem;
+    font-size: 1.6rem;
     font-family: 'Poppins', sans-serif;
-    font-weight: 100;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.header-wrapper {
+    background-color: azure;
+}
+
+.daily-task-title-wrapper {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 0.4rem 0.8rem;
+    height: calc(4 * 0.8rem);
+}
+
+.header-wrapper,
+.daily-task-container,
+/* .recurring-task-button-wrapper, */
+.recurring-task-container {
+    padding: 0.8rem;
+}
+
+.extension-title {
+    font-size: 2.0rem;
+    font-weight: bold;
+}
+
+.extension-subtitle {
+    font-size: 1.2rem;
+    font-weight: 400;
+    font-style: italic;
 }
 
 .recurring-todo-items,
@@ -14,6 +55,16 @@ body {
     list-style: none;
 }
 
+.daily-task-title {
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+#currentDate {
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+
 .recurring-todo-items li,
 .todo-items li {
     padding: 0.25rem;
@@ -21,10 +72,11 @@ body {
     margin-bottom: 0.5rem;
     display: flex;
     justify-content: space-between;
+    color:  rgb(94, 90, 90);
 }
 
 .todo-items li:hover,
-.todo-items li:hover {
+.recurring-todo-items li:hover {
     background: rgba(0, 0, 0, 0.137);
 }
 
@@ -32,10 +84,18 @@ body {
     text-decoration: line-through;
 }
 
-.recurring-todo-items div span .todo-items div span {
+.recurring-todo-items div span,
+.todo-items div span {
     margin: 0.5rem;
-    font-size: 1em;
+    font-size: 2.0rem;
     cursor: pointer;
+}
+
+
+.edit-daily-task-container,
+.edit-curring-task-container {
+    background-color: rgb(192, 188, 188);
+    padding: .8rem;
 }
 
 .new-task,
@@ -45,11 +105,21 @@ body {
 .recurring-task-container,
 .create-recurring-task-wrapper,
 .edit-recurring-task-wrapper,
-.edit-daily-task-wrapper {
+.edit-daily-task-wrapper,
+.chevron-up,
+.edit-daily-task-container,
+.edit-curring-task-container,
+.recurring-task-outer-container {
     display: none;
 }
 
-.recurring-task-button-wrapper {
+.input-label {
+    font-size: .9;
+    font-weight: 400;
+}
+
+.create-task-btn-wrapper,
+.create-recurring-task-button-wrapper {
     display: flex;
     justify-content: flex-end;
 }
@@ -71,6 +141,14 @@ button {
 button:hover {
     background-color: #0056b2;
     /* Adjust hover color as needed */
+}
+
+.recurring-task-button {
+    width: 100%;
+    border-radius: 0rem;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 1.6rem;
 }
 
 input {

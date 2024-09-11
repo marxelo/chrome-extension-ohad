@@ -1,10 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "reDo",
-  "description": "Tarefas recorrentes",
+  "name": "OHAED",
+  "description": "Ontem, hoje, amanhã e depois... - Gerenciador de Tarefas rotineiras",
   "version": "1.0",
   "action": {
-    "default_popup": "popup/redo.html",
+    "default_popup": "popup/popup.html",
     "default_icon": "images/icon-128.png"
   },
   "background": {
@@ -13,10 +13,10 @@
   },
   "permissions": [
     "storage",
-    "alarms",
-    "sidePanel"
+    "sidePanel", 
+    "notifications"
   ],
   "side_panel": {
-    "default_path": "popup/redo.html"
+    "default_path": "popup/popup.html"
   }
 }

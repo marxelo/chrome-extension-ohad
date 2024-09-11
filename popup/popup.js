@@ -1,10 +1,12 @@
 var editingTaskIndex = 0;
 var isClosed = true;
+const extensionTitle = "Extensão Ohaed"
 
-document.querySelector('.create-task').addEventListener('click', function () {
+document.querySelector('.create-task-btn').addEventListener('click', function () {
+    document.querySelector('.edit-daily-task-container').style.display = 'block';
     document.querySelector('.new-task').style.display = 'block';
     document.querySelector('.edit-daily-task-wrapper').style.display = 'none';
-    document.querySelector('.create-task').style.display = 'none';
+    document.querySelector('.create-task-btn').style.display = 'none';
 })
 
 document.querySelector('.new-task button').addEventListener('click', function () {
@@ -19,15 +21,29 @@ document.querySelector('.new-task button').addEventListener('click', function ()
         saveItems(itemsArr);
         fetchItems();
         document.querySelector('.new-task input').value = '';
+        document.querySelector('.edit-daily-task-container').style.display = 'none';
         document.querySelector('.new-task').style.display = 'none';
-        document.querySelector('.create-task').style.display = 'block';
+        document.querySelector('.create-task-btn').style.display = 'block';
+        chrome.notifications.create("notificationId", {
+            type: "basic",
+            iconUrl: "../images/icon-128.png",
+            title: extensionTitle,
+            message: "Tarefa diária adicionada"
+        });
     }
 })
 
 // cancel task creation
 document.querySelector('.new-task .btnCancel').addEventListener('click', function () {
+    document.querySelector('.edit-daily-task-container').style.display = 'none';
     document.querySelector('.new-task').style.display = 'none';
-    document.querySelector('.create-task').style.display = 'block';
+    document.querySelector('.create-task-btn').style.display = 'block';
+    chrome.notifications.create("notificationId", {
+        type: "basic",
+        iconUrl: "../images/icon-128.png",
+        title: extensionTitle,
+        message: "Criação de tarefa diária cancelada"
+    });
 })
 
 document.querySelector('.edit-daily-task button').addEventListener('click', function () {
@@ -43,14 +59,28 @@ document.querySelector('.edit-daily-task button').addEventListener('click', func
         fetchItems();
         document.querySelector('.edit-daily-task input').value = '';
         document.querySelector('.edit-daily-task-wrapper').style.display = 'none';
-        document.querySelector('.create-task').style.display = 'block';
+        document.querySelector('.edit-daily-task-container').style.display = 'none';
+        document.querySelector('.create-task-btn').style.display = 'block';
+        chrome.notifications.create("notificationId", {
+            type: "basic",
+            iconUrl: "../images/icon-128.png",
+            title: extensionTitle,
+            message: "Tarefa diária alterada"
+        });
     }
 })
 
 // Cancel daily task editing
 document.querySelector('.edit-daily-task .btnCancel').addEventListener('click', function () {
-    document.querySelector('.create-task').style.display = 'block';
+    document.querySelector('.edit-daily-task-container').style.display = 'none';
+    document.querySelector('.create-task-btn').style.display = 'block';
     document.querySelector('.edit-daily-task-wrapper').style.display = 'none';
+    chrome.notifications.create("notificationId", {
+        type: "basic",
+        iconUrl: "../images/icon-128.png",
+        title: extensionTitle,
+        message: "Alteração cancelada"
+    });
 })
 
 function fetchItems() {
@@ -58,6 +88,7 @@ function fetchItems() {
     const itemsList = document.querySelector('ul.todo-items');
     itemsList.innerHTML = '';
     var newItemHtml = '';
+    var incompleteTasks = 0;
 
     try {
         var items = localStorage.getItem(getCurrentDateTime());
@@ -86,6 +117,8 @@ function fetchItems() {
                 <span class="itemDelete"><img src="../images/trash.svg" alt="ícone excluir tarefa" width="16" height="16"></span>
                 </div>
                 </li>`;
+
+                incompleteTasks++;
             }
         }
 
@@ -105,22 +138,35 @@ function fetchItems() {
                 var index = this.parentNode.parentNode.dataset.itemindex;
                 itemDelete(index);
             });
+        }
 
+        if (incompleteTasks > 0) {
+            chrome.action.setBadgeText({ text: incompleteTasks.toString() })
+        } else {
+            chrome.action.setBadgeText({ text: "✓" })
         }
 
     } catch (error) {
         var items = localStorage.getItem('recurring-todo-items');
         var itemsArr = JSON.parse(items);
-        console.log(items)
+
         var dailyItems = [];
 
-        for (var i = 0; i < itemsArr.length; i++) {
-            var value = itemsArr[i].item;
-            dailyItems.push({ "item": value, "status": 0 })
-            const dailyItemsStr = JSON.stringify(dailyItems);
-            saveItems(dailyItems)
+        try {
+
+            if (itemsArr.length != null) {
+
+                for (var i = 0; i < itemsArr.length; i++) {
+                    var value = itemsArr[i].item;
+                    dailyItems.push({ "item": value, "status": 0 })
+                    const dailyItemsStr = JSON.stringify(dailyItems);
+                    saveItems(dailyItems)
+                }
+                fetchItems();
+            }
+        } catch (error) {
         }
-        fetchItems();
+
     }
 
 }
@@ -141,9 +187,9 @@ function itemComplete(index) {
 }
 
 function itemEdit(index) {
-    console.log('aqui')
-    document.querySelector('.create-task').style.display = 'none';
+    document.querySelector('.create-task-btn').style.display = 'none';
     document.querySelector('.new-task').style.display = 'none';
+    document.querySelector('.edit-daily-task-container').style.display = 'block';
     document.querySelector('.edit-daily-task-wrapper').style.display = 'block';
     document.querySelector('.recurring-task-container').style.display = 'none';
 
@@ -152,6 +198,7 @@ function itemEdit(index) {
 
     document.querySelector('.edit-daily-task input').value = itemsArr[index].item;
     editingTaskIndex = index;
+    fetchItems();
 }
 
 function itemDelete(index) {
@@ -163,6 +210,13 @@ function itemDelete(index) {
     saveItems(itemsArr);
 
     document.querySelector('ul.todo-items li[data-itemindex="' + index + '"]').remove();
+    chrome.notifications.create("notificationId", {
+        type: "basic",
+        iconUrl: "../images/icon-128.png",
+        title: extensionTitle,
+        message: "Tarefa diária excluída"
+    });
+    fetchItems();
 }
 
 function saveItems(obj) {
@@ -174,10 +228,16 @@ document.querySelector('.recurring-task-button').addEventListener('click', funct
     if (isClosed) {
         document.querySelector('.recurring-task-container').style.display = 'block';
         document.querySelector('.recurring-todo-items').style.display = 'block';
+        document.querySelector('.chevron-down').style.display = 'none';
+        document.querySelector('.chevron-up').style.display = 'block';
+        document.querySelector('.recurring-task-outer-container').style.display = 'block';
         fetchRecurringItems();
         isClosed = false;
     } else {
         document.querySelector('.recurring-task-container').style.display = 'none';
+        document.querySelector('.chevron-down').style.display = 'block';
+        document.querySelector('.chevron-up').style.display = 'none';
+        document.querySelector('.recurring-task-outer-container').style.display = 'none';
         isClosed = true;
     }
 })
@@ -187,6 +247,7 @@ document.querySelector('.create-recurring-task-button').addEventListener('click'
     document.querySelector('.create-recurring-task-wrapper').style.display = 'block';
     document.querySelector('.edit-recurring-task-wrapper').style.display = 'none';
     document.querySelector('.create-recurring-task-button').style.display = 'none';
+    document.querySelector('.edit-curring-task-container').style.display = 'block';
 })
 
 document.querySelector('.new-recurring-task button').addEventListener('click', function () {
@@ -205,14 +266,28 @@ document.querySelector('.new-recurring-task button').addEventListener('click', f
         document.querySelector('.new-recurring-task').style.display = 'none';
         document.querySelector('.create-recurring-task-wrapper').style.display = 'none';
         document.querySelector('.create-recurring-task-button').style.display = 'block';
+        document.querySelector('.edit-curring-task-container').style.display = 'block';
+        chrome.notifications.create("notificationId", {
+            type: "basic",
+            iconUrl: "../images/icon-128.png",
+            title: extensionTitle,
+            message: "Tarefa recorrente adicionada. Será adicionada à lista de tarefas diárias a partir de amanhã"
+        });
     }
 })
 
 document.querySelector('.new-recurring-task .btnCancel').addEventListener('click', function () {
-        document.querySelector('.new-recurring-task input').value = '';
-        document.querySelector('.new-recurring-task').style.display = 'none';
-        document.querySelector('.create-recurring-task-wrapper').style.display = 'none';
-        document.querySelector('.create-recurring-task-button').style.display = 'block';    
+    document.querySelector('.new-recurring-task input').value = '';
+    document.querySelector('.new-recurring-task').style.display = 'none';
+    document.querySelector('.edit-curring-task-container').style.display = 'none';
+    document.querySelector('.create-recurring-task-wrapper').style.display = 'none';
+    document.querySelector('.create-recurring-task-button').style.display = 'block';
+    chrome.notifications.create("notificationId", {
+        type: "basic",
+        iconUrl: "../images/icon-128.png",
+        title: extensionTitle,
+        message: "Criação de tarefa recorrente cancelada"
+    });
 })
 
 document.querySelector('.edit-recurring-task button').addEventListener('click', function () {
@@ -228,13 +303,27 @@ document.querySelector('.edit-recurring-task button').addEventListener('click', 
         document.querySelector('.edit-recurring-task input').value = '';
         document.querySelector('.edit-recurring-task-wrapper').style.display = 'none';
         document.querySelector('.create-recurring-task-button').style.display = 'block';
+        document.querySelector('.edit-curring-task-container').style.display = 'none';
+        chrome.notifications.create("notificationId", {
+            type: "basic",
+            iconUrl: "../images/icon-128.png",
+            title: extensionTitle,
+            message: "Tarefa recorrente alterada"
+        });
     }
 })
 
-document.querySelector('.edit-recurring-task .btnCancel').addEventListener('click', function () {    
-        document.querySelector('.edit-recurring-task input').value = '';
-        document.querySelector('.edit-recurring-task-wrapper').style.display = 'none';
-        document.querySelector('.create-recurring-task-button').style.display = 'block';    
+document.querySelector('.edit-recurring-task .btnCancel').addEventListener('click', function () {
+    document.querySelector('.edit-recurring-task input').value = '';
+    document.querySelector('.edit-recurring-task-wrapper').style.display = 'none';
+    document.querySelector('.edit-curring-task-container').style.display = 'none';
+    document.querySelector('.create-recurring-task-button').style.display = 'block';
+    chrome.notifications.create("notificationId", {
+        type: "basic",
+        iconUrl: "../images/icon-128.png",
+        title: extensionTitle,
+        message: "Alteração de tarefa recorrente cancelada"
+    });
 })
 
 function fetchRecurringItems() {
@@ -282,6 +371,7 @@ function fetchRecurringItems() {
 function recurringItemEdit(index) {
     document.querySelector('.create-recurring-task-wrapper').style.display = 'none';
     document.querySelector('.create-recurring-task-button').style.display = 'none';
+    document.querySelector('.edit-curring-task-container').style.display = 'block';
     document.querySelector('.edit-recurring-task').style.display = 'block';
     document.querySelector('.edit-recurring-task-wrapper').style.display = 'block';
 
@@ -290,6 +380,7 @@ function recurringItemEdit(index) {
 
     document.querySelector('.edit-recurring-task input').value = itemsArr[index].item;
     editingTaskIndex = index;
+    fetchRecurringItems();
 }
 
 function recurringItemDelete(index) {
@@ -301,6 +392,13 @@ function recurringItemDelete(index) {
     saveRecurringItems(itemsArr);
 
     document.querySelector('ul.recurring-todo-items li[data-itemindex="' + index + '"]').remove();
+    chrome.notifications.create("notificationId", {
+        type: "basic",
+        iconUrl: "../images/icon-128.png",
+        title: extensionTitle,
+        message: "Tarefa excluída da lista de tarefas recorrentes."
+    });
+    fetchRecurringItems();
 }
 
 function saveRecurringItems(obj) {
@@ -330,8 +428,6 @@ function getCurrentDate() {
     return formattedDate;
 }
 
-
-console.log(currentDateTime); // Output: 2024-09-08-23-19 (example)
 document.getElementById("currentDate").innerHTML = getCurrentDate();
 
 fetchItems();
