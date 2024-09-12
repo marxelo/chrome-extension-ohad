@@ -6,10 +6,12 @@ html {
 body {
     width: 50rem;
     font-size: 1.6rem;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-weight: 400;
     margin: 0;
     padding: 0;
+    background-color: #F7F7F7; 
+    color: #333333; 
 }
 
 p {
@@ -18,11 +20,23 @@ p {
 }
 
 .header-wrapper {
-    background-color: azure;
+    background-color: #FFFFFF; 
+    padding: 1rem;
+    border-bottom: 1px solid #E0E0E0; 
+    display: flex; 
+    align-items: center; 
 }
 
+.extension-icon {
+    margin-right: 10px; 
+  }
+
+  .extension-title-and-subtitle-wrapper {
+    text-align: left; 
+  }
+
 .daily-task-title-wrapper {
-    background-color: #007BFF;
+    background-color: #3A3D40; 
     color: #fff;
     padding: 0.4rem 0.8rem;
     height: calc(4 * 0.8rem);
@@ -36,14 +50,16 @@ p {
 }
 
 .extension-title {
-    font-size: 2.0rem;
-    font-weight: bold;
+    font-size: 2.2rem;
+    font-weight: 600; 
+    color: #2D2D2D; 
 }
 
 .extension-subtitle {
-    font-size: 1.2rem;
-    font-weight: 400;
+    font-size: 1.4rem;
+    font-weight: 300;
     font-style: italic;
+    color: #777777; 
 }
 
 .recurring-todo-items,
@@ -77,11 +93,12 @@ p {
 
 .todo-items li:hover,
 .recurring-todo-items li:hover {
-    background: rgba(0, 0, 0, 0.137);
+    background-color: #F1F1F1; 
 }
 
 .todo-items li.done .item {
     text-decoration: line-through;
+    font-style: italic;
 }
 
 .recurring-todo-items div span,
@@ -127,20 +144,15 @@ p {
 button {
     border: none;
     border-radius: 50.0rem;
-    font-family: 'Poppins', sans-serif;
-    /* Replace 'Your Custom Font' with your desired font */
-    background-color: #007BFF;
-    /* Replace with your desired color */
+    background-color: #5A67D8; 
     color: #fff;
-    /* Replace with your desired text color */
     padding: 0.4rem 0.8rem;
     cursor: pointer;
     margin-right: 0.2rem;
 }
 
 button:hover {
-    background-color: #0056b2;
-    /* Adjust hover color as needed */
+    background-color: #4C51BF;
 }
 
 .recurring-task-button {
@@ -153,28 +165,24 @@ button:hover {
 
 input {
     border: 1px solid #007BFF;
-    /* Remove default border */
     border-radius: 50.0rem;
-    /* Same rounded corners as buttons */
     font-family: inherit;
-    /* Inherit font from parent element or buttons */
     background-color: #fff;
-    /* Light background for input */
     color: #333;
-    /* Darker text color for readability */
     padding: 0.4rem 0.4rem;
-    /* Same padding as buttons */
     height: calc(0.4rem + 2 * 0.8rem);
-    /* Calculate height based on padding and border-radius */
-    /* Adjust as needed if padding or border-radius change */
     display: inline;
-    /* Makes input fill the width (optional) */
 }
 
 .btnCancel {
-    background-color: red;
+    background-color: #E53E3E; 
 }
 
 .btnCancel:hover {
-    background-color: rgb(180, 13, 13);
+    background-color: #C53030;
+}
+
+.daily-task-title {
+    font-size: 1.8rem;
+    font-weight: 500;
 }

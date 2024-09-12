@@ -1,6 +1,6 @@
 var editingTaskIndex = 0;
 var isClosed = true;
-const extensionTitle = "Extensão Ohaed"
+const extensionTitle = "Extensão Ohad"
 
 document.querySelector('.create-task-btn').addEventListener('click', function () {
     document.querySelector('.edit-daily-task-container').style.display = 'block';
@@ -165,6 +165,8 @@ function fetchItems() {
                 fetchItems();
             }
         } catch (error) {
+            const dailyItemsStr = JSON.stringify(dailyItems);
+            saveItems(dailyItems)
         }
 
     }

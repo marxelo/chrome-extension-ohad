@@ -1,69 +1,84 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
-    font-family: 'Poppins', sans-serif;
-  }
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  font-family: 'Nunito', sans-serif;
+}
 
-  .welcome-container {
-    width: 60vw;
-    height: 100vh;
-    background-color: #e0e0e0;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  }
+.welcome-container {
+  width: 60vw;
+  height: 100vh;
+  background-color: #e0e0e0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-  .header-wrapper .extension-title {
-    font-size: 2.4em;
-    font-weight: bold;
-    margin-bottom: 0px;
-    color: #333;
-  }
+.header-wrapper .extension-title {
+  font-size: 2.4em;
+  font-weight: bold;
+  margin-bottom: 0px;
+  color: #333;
+}
 
-  .header-wrapper .extension-subtitle {
-    font-size: 1.2em;
-    margin-bottom: 20px;
-    color: #555;
-  }
+.header-wrapper .extension-subtitle {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  color: #555;
+}
 
 
-  h6 {
-    font-size: 1.5em;
-    margin-bottom: 20px;
-    color: #444;
-  }
+h6 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: #444;
+}
 
-  p {
-    font-size: 2em;
-    line-height: 1.6;
-    color: #333;
-    margin-bottom: 10px;
-  }
+p {
+  font-size: 2em;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 10px;
+}
 
-  strong {
-    color: #222;
-  }
+strong {
+  color: #222;
+}
 
-  span {
-    font-weight: bold;
-    color: #007bff;
-  }
+span {
+  background-color: #5A67D8;
+  color: #fff;
+}
 
-  .instructions {
-    text-align: left;
-    font-size: 1.6em;
-  }
-  
+.main-area {
+  display: flex;
+  /* Use flexbox for layout */
+  align-items: center;
+  /* Vertically align items */
+}
+
+.instructions-text {
+  text-align: left;
+  /* Align text to the left */
+}
+
+.screenshot {
+  margin-right: 10px;
+}
+
+.instructions {
+  text-align: left;
+  font-size: 1.6em;
+}

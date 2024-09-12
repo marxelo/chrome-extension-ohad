@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "OHAED",
-  "description": "Ontem, hoje, amanhã e depois... - Gerenciador de Tarefas rotineiras",
+  "name": "OHAD",
+  "description": "Ontem, Hoje, Amanhã e Depois... - Lista de Afazeres com foco em Tarefas rotineiras",
   "version": "1.0",
   "action": {
     "default_popup": "popup/popup.html",
