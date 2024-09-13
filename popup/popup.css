@@ -44,7 +44,6 @@ p {
 
 .header-wrapper,
 .daily-task-container,
-/* .recurring-task-button-wrapper, */
 .recurring-task-container {
     padding: 0.8rem;
 }
@@ -84,7 +83,6 @@ p {
 .recurring-todo-items li,
 .todo-items li {
     padding: 0.25rem;
-    /* border-bottom: 0.02rem solid grey; */
     margin-bottom: 0.5rem;
     display: flex;
     justify-content: space-between;
@@ -109,24 +107,16 @@ p {
 }
 
 
-.edit-daily-task-container,
-.edit-curring-task-container {
+.create-and-edit-daily-task-container,
+.create-and-edit-recurring-task-container {
     background-color: rgb(192, 188, 188);
     padding: .8rem;
 }
 
-.new-task,
-.new-recurring-task,
-.recurring-todo-items,
-.edit-recurring-task,
-.recurring-task-container,
-.create-recurring-task-wrapper,
-.edit-recurring-task-wrapper,
-.edit-daily-task-wrapper,
-.chevron-up,
-.edit-daily-task-container,
-.edit-curring-task-container,
-.recurring-task-outer-container {
+.create-and-edit-daily-task-container,
+.recurring-task-outer-container,
+.create-and-edit-recurring-task-container,
+.chevron-up {
     display: none;
 }
 

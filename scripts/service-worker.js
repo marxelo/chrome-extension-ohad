@@ -1,6 +1,6 @@
 
 chrome.runtime.onInstalled.addListener(({reason}) => {
-  if (reason === 'update') {
+  if (reason === 'install') {
     chrome.tabs.create({
       url: "./welcome/welcome.html"
     });
