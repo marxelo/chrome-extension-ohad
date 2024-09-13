@@ -1,5 +1,6 @@
 // popup-utils.js
 const extensionTitle = "Extensão Ohad"; // Define it globally
+const testingMode = false;
 
 function saveItems(obj) {
     var string = JSON.stringify(obj);
@@ -115,11 +116,14 @@ function getCurrentDateTime() {
     const year = now.getFullYear();
     const month = String(now.getMonth() + 1).padStart(2, '0');
     const day = String(now.getDate()).padStart(2, '0');
-    const hour = String(now.getHours()).padStart(2, '0');
-    const minute = String(now.getMinutes()).padStart(2, '0');
-    const min = minute.substring(0, 1)
 
-    return `${year}-${month}-${day}-${hour}-${min}`;
+    if (testingMode) {
+        const hour = String(now.getHours()).padStart(2, '0');
+        const minute = String(now.getMinutes()).padStart(2, '0');
+        const min = minute.substring(0, 1)
+        return `${year}-${month}-${day}-${hour}-${min}`;
+    }
+    return `${year}-${month}-${day}`;
 }
 
 function getCurrentDate() {

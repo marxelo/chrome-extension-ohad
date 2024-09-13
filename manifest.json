@@ -1,14 +1,14 @@
 {
   "manifest_version": 3,
   "name": "OHAD",
-  "description": "Ontem, Hoje, Amanhã e Depois... - Lista de Afazeres com foco em Tarefas rotineiras",
+  "description": "Ontem, Hoje, Amanhã e Depois... - Gerenciador de Tarefas",
   "version": "1.0",
   "action": {
-    "default_popup": "popup/popup.html",
-    "default_icon": "images/icon-128.png"
+    "default_popup": "src/popup/popup.html",
+    "default_icon": "src/images/icon-128.png"
   },
   "background": {
-    "service_worker": "scripts/service-worker.js",
+    "service_worker": "src/scripts/service-worker.js",
     "type": "module"
   },
   "permissions": [
@@ -17,6 +17,6 @@
     "notifications"
   ],
   "side_panel": {
-    "default_path": "popup/popup.html"
+    "default_path": "src/popup/popup.html"
   }
 }

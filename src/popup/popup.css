@@ -159,7 +159,7 @@ input {
     font-family: inherit;
     background-color: #fff;
     color: #333;
-    padding: 0.4rem 0.4rem;
+    padding: 0.4rem 1.2rem;
     height: calc(0.4rem + 2 * 0.8rem);
     display: inline;
 }
