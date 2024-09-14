@@ -14,32 +14,29 @@ A extensão usa **localStorage** para persistência de dados e a interface de us
 
 ```text
 .
+├── src
+│  ├── assets
+│  │  ├── icons
+│  │  └── images
+│  ├── popup
+│  │  ├── popup-utils.js
+│  │  ├── popup.css
+│  │  ├── popup.html
+│  │  ├── popup.js
+│  │  └── popup.test.js
+│  ├── scripts
+│  │  └── service-worker.js
+│  ├── tests
+│  │  └── popup.integration.test.js
+│  └── welcome
+│     ├── welcome.css
+│     └── welcome.html
 ├── LICENSE
 ├── manifest.json
 ├── package-lock.json
 ├── package.json
 ├── readme.md
-└── src
-   ├── images
-   │  ├── check-square.svg
-   │  ├── chevron-down.svg
-   │  ├── chevron-up.svg
-   │  ├── edit.svg
-   │  ├── icon-128.png
-   │  ├── screenshot.png
-   │  ├── square.svg
-   │  └── trash.svg
-   ├── popup
-   │  ├── popup-utils.js
-   │  ├── popup.css
-   │  ├── popup.html
-   │  ├── popup.js
-   │  └── popup.test.js
-   ├── scripts
-   │  └── service-worker.js
-   └── welcome
-      ├── welcome.css
-      └── welcome.html
+└── users-manual.md
 ```
 
 #### Principais arquivos
@@ -139,6 +136,10 @@ A extensão Ohad recria a lista de tarefas diárias a cada novo dia. Para fins d
 - Altere o valor da variável `testingMode` para `false`;
 - Instale a extensão conforme item 2 da seção **Carregue a extensão no Chrome** se ainda não instalada;
 - Ou também em `chrome://extensions`,  na seção principal da página, procure a card referente à extensão Ohad e clique no ícone &#8635; para recarregar em modo teste.
+  
+## Contribuição
+
+Contribuições são bem-vindas! Sinta-se à vontade para enviar pull requests ou relatar problemas no repositório do projeto.
 
 ## Licença
 

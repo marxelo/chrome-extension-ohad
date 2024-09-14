@@ -26,9 +26,9 @@ function fetchItems() {
                 newItemHtml += `<li data-itemindex="${i}" ${status}>
         <span class="item">${itemsArr[i].item}</span>
         <div>
-            <span class="itemComplete"><img src="../images/check-square.svg" alt="ícone tarefa completa" width="16" height="16"></span>
-            <span class="itemEdit"><img src="../images/edit.svg" alt="ícone editar tarefa" width="16" height="16"></span>
-            <span class="itemDelete"><img src="../images/trash.svg" alt="ícone excluir tarefa" width="16" height="16"></span>
+            <span class="itemComplete"><img src="../assets/icons/check-square.svg" alt="ícone tarefa completa" width="16" height="16"></span>
+            <span class="itemEdit"><img src="../assets/icons/edit.svg" alt="ícone editar tarefa" width="16" height="16"></span>
+            <span class="itemDelete"><img src="../assets/icons/trash.svg" alt="ícone excluir tarefa" width="16" height="16"></span>
         </div>
         </li>`;
 
@@ -36,9 +36,9 @@ function fetchItems() {
                 newItemHtml += `<li data-itemindex="${i}" ${status}>
             <span class="item">${itemsArr[i].item}</span>
             <div>
-            <span class="itemComplete"><img src="../images/square.svg" alt="ícone tarefa a fazer" width="16" height="16"></span>
-            <span class="itemEdit"><img src="../images/edit.svg" alt="ícone editar tarefa" width="16" height="16"></span>
-            <span class="itemDelete"><img src="../images/trash.svg" alt="ícone excluir tarefa" width="16" height="16"></span>
+            <span class="itemComplete"><img src="../assets/icons/square.svg" alt="ícone tarefa a fazer" width="16" height="16"></span>
+            <span class="itemEdit"><img src="../assets/icons/edit.svg" alt="ícone editar tarefa" width="16" height="16"></span>
+            <span class="itemDelete"><img src="../assets/icons/trash.svg" alt="ícone excluir tarefa" width="16" height="16"></span>
             </div>
             </li>`;
 
@@ -157,7 +157,7 @@ function itemDelete(index) {
 
     chrome.notifications.create("notificationId", {
         type: "basic",
-        iconUrl: "../images/icon-128.png",
+        iconUrl: "../assets/icons/icon_128.png",
         title: extensionTitle,
         message: "Tarefa diária excluída"
     });
@@ -179,8 +179,8 @@ function fetchRecurringItems() {
             newItemHtml += `<li data-itemindex="${i}">
         <span class="item">${itemsArr[i].item}</span>
         <div>
-            <span class="recurringItemEdit"><img src="../images/edit.svg" alt="square" width="16" height="16"></span>
-            <span class="recurringItemDelete"><img src="../images/trash.svg" alt="square" width="16" height="16"></span>
+            <span class="recurringItemEdit"><img src="../assets/icons/edit.svg" alt="square" width="16" height="16"></span>
+            <span class="recurringItemDelete"><img src="../assets/icons/trash.svg" alt="square" width="16" height="16"></span>
         </div>
         </li>`;
         }
@@ -230,7 +230,7 @@ function recurringItemDelete(index) {
 
     chrome.notifications.create("notificationId", {
         type: "basic",
-        iconUrl: "../images/icon-128.png",
+        iconUrl: "../assets/icons/icon_128.png",
         title: extensionTitle,
         message: "Tarefa excluída da lista de tarefas recorrentes."
     });

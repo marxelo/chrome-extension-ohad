@@ -27,7 +27,7 @@ function initializePopup() {
             document.querySelector('.create-task-btn').style.display = 'block';
             chrome.notifications.create("notificationId", {
                 type: "basic",
-                iconUrl: "../images/icon-128.png",
+                iconUrl: "../assets/icons/icon_128.png",
                 title: extensionTitle,
                 message: "Tarefa diária adicionada"
             });
@@ -41,7 +41,7 @@ function initializePopup() {
         document.querySelector('.create-task-btn').style.display = 'block';
         chrome.notifications.create("notificationId", {
             type: "basic",
-            iconUrl: "../images/icon-128.png",
+            iconUrl: "../assets/icons/icon_128.png",
             title: extensionTitle,
             message: "Criação de tarefa diária cancelada"
         });
@@ -64,7 +64,7 @@ function initializePopup() {
             document.querySelector('.create-task-btn').style.display = 'block';
             chrome.notifications.create("notificationId", {
                 type: "basic",
-                iconUrl: "../images/icon-128.png",
+                iconUrl: "../assets/icons/icon_128.png",
                 title: extensionTitle,
                 message: "Tarefa diária alterada"
             });
@@ -78,7 +78,7 @@ function initializePopup() {
         document.querySelector('.create-task-btn').style.display = 'block';
         chrome.notifications.create("notificationId", {
             type: "basic",
-            iconUrl: "../images/icon-128.png",
+            iconUrl: "../assets/icons/icon_128.png",
             title: extensionTitle,
             message: "Alteração cancelada"
         });
@@ -124,7 +124,7 @@ function initializePopup() {
             document.querySelector('.create-recurring-task-button').style.display = 'block';
             chrome.notifications.create("notificationId", {
                 type: "basic",
-                iconUrl: "../images/icon-128.png",
+                iconUrl: "../assets/icons/icon_128.png",
                 title: extensionTitle,
                 message: "Tarefa recorrente adicionada. Será adicionada à lista de tarefas diárias a partir de amanhã"
             });
@@ -138,7 +138,7 @@ function initializePopup() {
         document.querySelector('.create-recurring-task-button').style.display = 'block';
         chrome.notifications.create("notificationId", {
             type: "basic",
-            iconUrl: "../images/icon-128.png",
+            iconUrl: "../assets/icons/icon_128.png",
             title: extensionTitle,
             message: "Criação de tarefa recorrente cancelada"
         });
@@ -160,7 +160,7 @@ function initializePopup() {
             document.querySelector('.create-recurring-task-button').style.display = 'block';
             chrome.notifications.create("notificationId", {
                 type: "basic",
-                iconUrl: "../images/icon-128.png",
+                iconUrl: "../assets/icons/icon_128.png",
                 title: extensionTitle,
                 message: "Tarefa recorrente alterada"
             });
@@ -174,7 +174,7 @@ function initializePopup() {
         document.querySelector('.create-recurring-task-button').style.display = 'block';
         chrome.notifications.create("notificationId", {
             type: "basic",
-            iconUrl: "../images/icon-128.png",
+            iconUrl: "../assets/icons/icon_128.png",
             title: extensionTitle,
             message: "Alteração de tarefa recorrente cancelada"
         });
