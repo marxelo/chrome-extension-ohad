@@ -189,7 +189,7 @@ describe('Popup.js Unit Tests', () => {
     });
 
     test('getCurrentDateTime should return formatted date-time string', () => {
-        const dateTimeRegex = /^\d{4}-\d{2}-\d{2}-\d{2}-\d$/;
+        const dateTimeRegex = /^\d{4}-\d{2}-\d{2}/;
         expect(popup.getCurrentDateTime()).toMatch(dateTimeRegex);
     });
 

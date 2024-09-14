@@ -5,9 +5,8 @@
   },
   "scripts": {
     "test": "jest --coverage"
-  },  
-    "jest": {
-      "testEnvironment": "jsdom"
-    }
-  
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
+  }
 }
